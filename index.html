@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Bhaiyu 🎉</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        margin: 0;
+        background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+        overflow-x: hidden;
+        color: #333;
+    }
+
+    canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 40px 20px;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        margin-top: 60px;
+        animation: fadeIn 2s ease;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 3rem;
+        color: #e63946;
+    }
+
+    p {
+        line-height: 1.8;
+        font-size: 1.05rem;
+        white-space: pre-line;
+    }
+
+    .signature {
+        margin-top: 30px;
+        font-weight: bold;
+        text-align: right;
+    }
+
+    .parents {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 2px dashed #e63946;
+    }
+
+    /* Floating hearts */
+    .heart {
+        position: fixed;
+        bottom: -20px;
+        font-size: 20px;
+        animation: floatUp 8s linear infinite;
+        opacity: 0.8;
+        z-index: 1;
+    }
+
+    @keyframes floatUp {
+        0% {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-110vh) scale(1.5);
+            opacity: 0;
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+        text-align: center;
+        margin: 30px 0;
+        font-size: 0.9rem;
+        color: #555;
+    }
+</style>
+</head>
+
+<body>
+
+<canvas id="confetti"></canvas>
+
+<div class="container">
+    <h1>Happy Birthday Bhaiyu 🫀🥹</h1>
+
+    <p>
+Happy Birthday Bhaiyu🫀🥹 — my biggest supporter, my guide, and my strongest pillar.
+
+If you hadn’t been there for me, honestly, I don’t know where I would be or what I would have been doing today. Life would have felt so much harder without you by my side. You’ve always been someone I can rely on, someone who silently lifts me up, and someone who makes even the toughest days feel manageable.
+
+I cherish all the memories we’ve shared together — every silly game we played, even when I was terrible at badminton and you still played with me patiently. I remember your little lessons, your advice, your “activa” lessons, and yes — all those tapli, punches on my back you gave me when I messed up. I cherish everything, the small fights, the laughter, the teasing, the nagging, and even the serious talks.
+
+I also cherish the adventures we’ve had together — going to the pahad, enjoying the view, feeling free, and just laughing at nothing and everything at the same time. Those moments remind me how lucky I am to have you, not just as a brother, but as a friend, a guide, and a constant presence in my life.
+
+I may not always show it, and I may not say it enough, but I love you more than words can ever express. My respect, gratitude, and admiration for you run so deep. You’ve shaped so much of who I am, and I’ll always be thankful for you. Having you is one of the greatest blessings of my life.
+
+I hope this year brings you everything you deserve — happiness, peace, success, laughter, adventures, and all the little joys that make life so beautiful. May every day bring you something to smile about, and may you always know how much you are loved, cherished, and appreciated.
+
+Happy Birthday, Bhaiyu. I love you — more than I can ever say, always. 🤍✨
+    </p>
+
+    <div class="parents">
+        <p>
+<strong>From Maa and Papa:</strong>
+
+Bhaiyu, we are so proud of the person you have become. Your kindness, responsibility, and the way you care for your family make our hearts full. You truly are our bestest son, and seeing you grow into someone so strong, thoughtful, and loving gives us more happiness than words can express. Always know that we love you deeply, and we are grateful every day to have you as our son. Keep shining, keep smiling, and keep being the amazing person you are.
+        </p>
+    </div>
+
+    <div class="signature">
+        🤍 With endless love
+    </div>
+</div>
+
+<footer>
+    Made with 💖 for Bhaiyu
+</footer>
+
+<script>
+/* Confetti Effect */
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const confettiPieces = [];
+
+for (let i = 0; i < 150; i++) {
+    confettiPieces.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 6 + 2,
+        d: Math.random() * 2 + 1,
+        color: `hsl(${Math.random() * 360}, 100%, 60%)`
+    });
+}
+
+function drawConfetti() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    confettiPieces.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+    });
+    updateConfetti();
+}
+
+function updateConfetti() {
+    confettiPieces.forEach(p => {
+        p.y += p.d;
+        if (p.y > canvas.height) {
+            p.y = -10;
+            p.x = Math.random() * canvas.width;
+        }
+    });
+}
+
+setInterval(drawConfetti, 20);
+
+/* Floating Hearts */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "🤍";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = 5 + Math.random() * 5 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 9000);
+}
+
+setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
